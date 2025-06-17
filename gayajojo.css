@@ -1,0 +1,397 @@
+/* --- Import Font --- */
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&family=Nunito+Sans:wght@300;400;700&display=swap");
+
+/* --- Variabel CSS & Gaya Dasar --- */
+/* Variabel tetap global, tidak perlu diubah */
+:root {
+  --pearl-white: #fdfdfd;
+  --deep-blue: #0a1931;
+  --sky-blue: #a6d6e8;
+  --soft-gold: #d4af37;
+}
+
+/* === SEMUA GAYA KUSTOM SEKARANG DI DALAM .jojo-theme === */
+
+.jojo-theme body {
+  /* Ini tidak diperlukan karena body ada di luar .jojo-theme, jadi kita biarkan */
+  /* Aturan body asli dipindahkan ke .jojo-theme untuk font dan warna */
+  background-color: var(--pearl-white);
+  color: var(--deep-blue);
+  font-family: "Nunito Sans", sans-serif;
+}
+
+/* Mengaplikasikan font dasar ke dalam zona tema */
+.jojo-theme {
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--deep-blue);
+  background-color: var(--pearl-white);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* --- Gaya Header & Hero Section --- */
+.jojo-theme .hero-section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(166, 214, 232, 0.2) 0%,
+    var(--pearl-white) 80%
+  );
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.jojo-theme .hero-content {
+  z-index: 2;
+  animation: fadeIn 2s ease-in-out;
+  pointer-events: none;
+}
+
+.jojo-theme .hero-content h1 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  letter-spacing: 0.2em;
+  margin: 0 0 10px 0;
+  color: var(--deep-blue);
+}
+
+.jojo-theme .hero-content p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--deep-blue);
+  opacity: 0.8;
+  font-weight: 300;
+}
+
+.jojo-theme .logo-text {
+  font-family: "Alfa Slab One", serif;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  color: var(--deep-blue);
+  opacity: 0.7;
+  font-weight: 400;
+}
+
+/* --- Animasi Gelembung --- */
+.jojo-theme .bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.jojo-theme .bubble {
+  position: absolute;
+  background-color: rgba(166, 214, 232, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jojo-theme .bubble::before {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  background-color: var(--sky-blue);
+  opacity: 0.8;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E")
+    no-repeat center;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E")
+    no-repeat center;
+  background-size: contain;
+}
+
+.jojo-theme .ambient {
+  bottom: -150px;
+  animation: rise 25s infinite ease-in;
+}
+
+.jojo-theme .ambient:nth-of-type(1) {
+  left: 10%;
+  width: 80px;
+  height: 80px;
+  animation-duration: 22s;
+  animation-delay: 1s;
+}
+.jojo-theme .ambient:nth-of-type(2) {
+  left: 20%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 17s;
+  animation-delay: 2s;
+}
+.jojo-theme .ambient:nth-of-type(3) {
+  left: 35%;
+  width: 50px;
+  height: 50px;
+  animation-duration: 25s;
+  animation-delay: 4s;
+}
+.jojo-theme .ambient:nth-of-type(4) {
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  animation-duration: 18s;
+  animation-delay: 1s;
+}
+.jojo-theme .ambient:nth-of-type(5) {
+  left: 65%;
+  width: 40px;
+  height: 40px;
+  animation-duration: 28s;
+  animation-delay: 5s;
+}
+
+/* Keyframes tidak perlu diawali .jojo-theme */
+@keyframes rise {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+@keyframes floatFreely {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--drift), -100vh);
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.jojo-theme .stand-visual {
+  position: absolute;
+  bottom: -110px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(280px, 40vw, 400px);
+  height: 110px;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 0;
+  animation: fadeInStand 4s ease-out 1.5s forwards,
+    peekStand 120s infinite ease-in-out 4s;
+}
+.jojo-theme .stand-visual img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@keyframes fadeInStand {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.25;
+  }
+}
+@keyframes peekStand {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  96% {
+    transform: translate(-50%, 0);
+  }
+  97.5% {
+    transform: translate(-50%, -100px);
+  }
+  99% {
+    transform: translate(-50%, -100px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+.jojo-theme .stand-visual.is-summoned {
+  animation: summonStand 4s ease-out forwards;
+}
+@keyframes summonStand {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(-50%, -100px);
+    opacity: 0.75;
+  }
+  75% {
+    transform: translate(-50%, -100px);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(-50%, 0);
+    opacity: 0.25;
+  }
+}
+
+/* --- Bagian Konten Baru --- */
+.jojo-theme .content-section {
+  padding: 60px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.jojo-theme .content-section h2 {
+  font-family: "Alfa Slab One", serif;
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  color: var(--deep-blue);
+  margin-bottom: 20px;
+}
+.jojo-theme .content-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+/* --- Gaya Bagian Musuh --- */
+.jojo-theme .enemies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+.jojo-theme .enemy-card {
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(166, 214, 232, 0.5);
+  border-radius: 15px;
+  padding: 25px;
+  text-align: left;
+  box-shadow: 0 8px 32px 0 rgba(10, 25, 49, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.jojo-theme .enemy-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 40px 0 rgba(10, 25, 49, 0.1);
+}
+.jojo-theme .enemy-card .enemy-img {
+  width: 100%;
+  height: 200px;
+  background-color: var(--sky-blue);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+}
+.jojo-theme .enemy-card h3 {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin: 0;
+  color: var(--deep-blue);
+}
+.jojo-theme .enemy-card .stand-name {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  color: var(--soft-gold);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+.jojo-theme .enemy-card .ability {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.7;
+}
+
+/* --- Pemutar Musik (sekarang fungsional) --- */
+/* Karena ini elemen fixed, lebih baik tidak dimasukkan dalam .jojo-theme agar tidak terpengaruh positioning aneh */
+.fake-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 12px 18px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out 0.5s backwards;
+  cursor: pointer;
+  user-select: none;
+}
+.fake-player .icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--deep-blue);
+}
+.fake-player .song-info {
+  display: flex;
+  flex-direction: column;
+}
+.fake-player .song-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.fake-player .song-artist {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+.fake-player .progress-bar {
+  width: 100px;
+  height: 4px;
+  background-color: rgba(10, 25, 49, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+.fake-player .progress {
+  width: 100%;
+  height: 100%;
+  background-color: var(--sky-blue);
+  transform-origin: left;
+  animation: playProgress 183s linear;
+  animation-play-state: paused;
+  transform: scaleX(0);
+}
+.fake-player.playing .progress {
+  transform: scaleX(1);
+  animation-play-state: running;
+}
+@keyframes playProgress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
