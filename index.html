@@ -1,354 +1,603 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Soft & Wet - Konsep Web</title>
     <style>
-        /* --- Import Font --- */
-        @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&family=Nunito+Sans:wght@300;400;700&display=swap');
+      /* --- Import Font --- */
+      @import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bebas+Neue&family=Nunito+Sans:wght@300;400;700&display=swap");
 
-        /* --- Variabel CSS & Gaya Dasar --- */
-        :root {
-            --pearl-white: #FDFDFD;
-            --deep-blue: #0A1931;
-            --sky-blue: #A6D6E8;
-            --soft-gold: #D4AF37;
-        }
+      /* --- Variabel CSS & Gaya Dasar --- */
+      :root {
+        --pearl-white: #fdfdfd;
+        --deep-blue: #0a1931;
+        --sky-blue: #a6d6e8;
+        --soft-gold: #d4af37;
+      }
 
-        body {
-            background-color: var(--pearl-white);
-            color: var(--deep-blue);
-            font-family: 'Nunito Sans', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: hidden; /* Mencegah scrollbar saat gelembung di luar layar */
-        }
+      body {
+        background-color: var(--pearl-white);
+        color: var(--deep-blue);
+        font-family: "Nunito Sans", sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Ganti ke overflow-x agar scroll vertikal bisa */
+      }
 
-        /* --- Gaya Header & Hero Section --- */
-        .hero-section {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(180deg, rgba(166, 214, 232, 0.2) 0%, var(--pearl-white) 80%);
-            overflow: hidden;
-            cursor: pointer;
-        }
+      /* --- Gaya Header & Hero Section --- */
+      .hero-section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        background: linear-gradient(
+          180deg,
+          rgba(166, 214, 232, 0.2) 0%,
+          var(--pearl-white) 80%
+        );
+        overflow: hidden;
+        cursor: pointer;
+      }
 
-        .hero-content {
-            z-index: 2;
-            animation: fadeIn 2s ease-in-out;
-            pointer-events: none;
-        }
+      .hero-content {
+        z-index: 2;
+        animation: fadeIn 2s ease-in-out;
+        pointer-events: none;
+      }
 
-        .hero-content h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3.5rem, 10vw, 8rem);
-            letter-spacing: 0.2em;
-            margin: 0 0 10px 0;
-            color: var(--deep-blue);
-        }
+      .hero-content h1 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(3.5rem, 10vw, 8rem);
+        letter-spacing: 0.2em;
+        margin: 0 0 10px 0;
+        color: var(--deep-blue);
+      }
 
-        .hero-content p {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: var(--deep-blue);
-            opacity: 0.8;
-            font-weight: 300;
-        }
+      .hero-content p {
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        color: var(--deep-blue);
+        opacity: 0.8;
+        font-weight: 300;
+      }
 
-        /* Gaya baru untuk logo teks "JOJOLION" dengan font baru */
-        .logo-text {
-            font-family: 'Alfa Slab One', serif;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            color: var(--deep-blue);
-            opacity: 0.7;
-            font-weight: 400;
-        }
-        
-        /* --- Animasi Gelembung --- */
-        .bubbles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
+      .logo-text {
+        font-family: "Alfa Slab One", serif;
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+        color: var(--deep-blue);
+        opacity: 0.7;
+        font-weight: 400;
+      }
 
-        .bubble {
-            position: absolute;
-            background-color: rgba(166, 214, 232, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .bubble::before {
-            content: '';
-            position: absolute;
-            width: 60%;
-            height: 60%;
-            background-color: var(--sky-blue);
-            opacity: 0.8;
-            -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E") no-repeat center;
-            mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E") no-repeat center;
-            background-size: contain;
-        }
-        
-        .ambient {
-            bottom: -150px;
-            animation: rise 25s infinite ease-in;
-        }
-        
-        .ambient:nth-of-type(1) { left: 10%; width: 80px; height: 80px; animation-duration: 22s; animation-delay: 1s; }
-        .ambient:nth-of-type(2) { left: 20%; width: 30px; height: 30px; animation-duration: 17s; animation-delay: 2s; }
-        .ambient:nth-of-type(3) { left: 35%; width: 50px; height: 50px; animation-duration: 25s; animation-delay: 4s; }
-        .ambient:nth-of-type(4) { left: 50%; width: 100px; height: 100px; animation-duration: 18s; animation-delay: 1s; }
-        .ambient:nth-of-type(5) { left: 65%; width: 40px; height: 40px; animation-duration: 28s; animation-delay: 5s; }
-        
-        @keyframes rise {
-            from { transform: translateY(0); opacity: 1; }
-            to { transform: translateY(-120vh); opacity: 0; }
-        }
+      /* --- Animasi Gelembung --- */
+      .bubbles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
 
-        @keyframes floatFreely {
-            0% { transform: translate(0, 0); opacity: 1; }
-            100% { transform: translate(var(--drift), -100vh); opacity: 0; }
-        }
+      .bubble {
+        position: absolute;
+        background-color: rgba(166, 214, 232, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+      .bubble::before {
+        content: "";
+        position: absolute;
+        width: 60%;
+        height: 60%;
+        background-color: var(--sky-blue);
+        opacity: 0.8;
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E")
+          no-repeat center;
+        mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3E%3C/svg%3E")
+          no-repeat center;
+        background-size: contain;
+      }
 
-        /* --- Visual Stand Soft & Wet --- */
-        .stand-visual {
-            position: absolute;
-            bottom: -110px; /* Posisi awal agar kepala tersembunyi */
-            left: 50%;
-            transform: translateX(-50%);
-            width: clamp(280px, 40vw, 400px);
-            height: 110px; /* Tinggi wadah disesuaikan untuk kepala */
-            overflow: hidden; 
-            z-index: 0;
-            opacity: 0;
-            /* Animasi default: mengintip setiap 2 menit */
-            animation: fadeInStand 4s ease-out 1.5s forwards, peekStand 120s infinite ease-in-out 4s;
-        }
+      .ambient {
+        bottom: -150px;
+        animation: rise 25s infinite ease-in;
+      }
 
-        .stand-visual img {
-            width: 100%;
-            height: auto;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
+      .ambient:nth-of-type(1) {
+        left: 10%;
+        width: 80px;
+        height: 80px;
+        animation-duration: 22s;
+        animation-delay: 1s;
+      }
+      .ambient:nth-of-type(2) {
+        left: 20%;
+        width: 30px;
+        height: 30px;
+        animation-duration: 17s;
+        animation-delay: 2s;
+      }
+      .ambient:nth-of-type(3) {
+        left: 35%;
+        width: 50px;
+        height: 50px;
+        animation-duration: 25s;
+        animation-delay: 4s;
+      }
+      .ambient:nth-of-type(4) {
+        left: 50%;
+        width: 100px;
+        height: 100px;
+        animation-duration: 18s;
+        animation-delay: 1s;
+      }
+      .ambient:nth-of-type(5) {
+        left: 65%;
+        width: 40px;
+        height: 40px;
+        animation-duration: 28s;
+        animation-delay: 5s;
+      }
 
-        @keyframes fadeInStand {
-            from { opacity: 0; }
-            to { opacity: 0.25; } 
+      @keyframes rise {
+        from {
+          transform: translateY(0);
+          opacity: 1;
         }
-        
-        @keyframes peekStand {
-            0% { transform: translate(-50%, 0); }
-            96% { transform: translate(-50%, 0); }
-            97.5% { transform: translate(-50%, -100px); } /* Dibuat lebih tinggi */
-            99% { transform: translate(-50%, -100px); }   /* Dibuat lebih tinggi */
-            100% { transform: translate(-50%, 0); }
+        to {
+          transform: translateY(-120vh);
+          opacity: 0;
         }
+      }
 
-        /* Kelas dan animasi baru untuk spam-click */
-        .stand-visual.is-summoned {
-            animation: summonStand 4s ease-out forwards;
+      @keyframes floatFreely {
+        0% {
+          transform: translate(0, 0);
+          opacity: 1;
         }
+        100% {
+          transform: translate(var(--drift), -100vh);
+          opacity: 0;
+        }
+      }
 
-        @keyframes summonStand {
-            0% {
-                transform: translate(-50%, 0);
-                opacity: 0.3;
-            }
-            25% {
-                transform: translate(-50%, -100px); /* Dibuat lebih tinggi */
-                opacity: 0.75;
-            }
-            75% {
-                transform: translate(-50%, -100px); /* Dibuat lebih tinggi */
-                opacity: 0.75;
-            }
-            100% {
-                transform: translate(-50%, 0);
-                opacity: 0.25;
-            }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
 
+      /* --- Visual Stand Soft & Wet --- */
+      .stand-visual {
+        position: absolute;
+        bottom: -110px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: clamp(280px, 40vw, 400px);
+        height: 110px;
+        overflow: hidden;
+        z-index: 0;
+        opacity: 0;
+        animation: fadeInStand 4s ease-out 1.5s forwards,
+          peekStand 120s infinite ease-in-out 4s;
+      }
 
-        /* --- Pemutar Musik Palsu --- */
-        .fake-player {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 12px 18px;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            animation: fadeIn 1s ease-in-out 0.5s backwards;
-        }
+      .stand-visual img {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
 
-        .fake-player .icon {
-            width: 20px;
-            height: 20px;
-            fill: var(--deep-blue);
+      @keyframes fadeInStand {
+        from {
+          opacity: 0;
         }
+        to {
+          opacity: 0.25;
+        }
+      }
 
-        .fake-player .song-info {
-            display: flex;
-            flex-direction: column;
+      @keyframes peekStand {
+        0% {
+          transform: translate(-50%, 0);
         }
+        96% {
+          transform: translate(-50%, 0);
+        }
+        97.5% {
+          transform: translate(-50%, -100px);
+        }
+        99% {
+          transform: translate(-50%, -100px);
+        }
+        100% {
+          transform: translate(-50%, 0);
+        }
+      }
 
-        .fake-player .song-title {
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
+      .stand-visual.is-summoned {
+        animation: summonStand 4s ease-out forwards;
+      }
 
-        .fake-player .song-artist {
-            font-size: 0.8rem;
-            opacity: 0.7;
+      @keyframes summonStand {
+        0% {
+          transform: translate(-50%, 0);
+          opacity: 0.3;
         }
-        
-        .fake-player .progress-bar {
-            width: 100px;
-            height: 4px;
-            background-color: rgba(10, 25, 49, 0.1);
-            border-radius: 2px;
-            overflow: hidden;
-            margin-top: 5px;
+        25% {
+          transform: translate(-50%, -100px);
+          opacity: 0.75;
         }
-        
-        .fake-player .progress {
-            width: 100%;
-            height: 100%;
-            background-color: var(--sky-blue);
-            transform-origin: left;
-            animation: playProgress 183s linear infinite; /* Durasi lagu asli 3:03 */
+        75% {
+          transform: translate(-50%, -100px);
+          opacity: 0.75;
         }
-        
-        @keyframes playProgress {
-            from { transform: scaleX(0); }
-            to { transform: scaleX(1); }
+        100% {
+          transform: translate(-50%, 0);
+          opacity: 0.25;
         }
+      }
 
+      /* --- Bagian Konten Baru --- */
+      .content-section {
+        padding: 60px 40px;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .content-section h2 {
+        font-family: "Alfa Slab One", serif;
+        font-size: clamp(2rem, 6vw, 2.8rem);
+        color: var(--deep-blue);
+        margin-bottom: 20px;
+      }
+
+      .content-section p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        opacity: 0.8;
+        max-width: 700px;
+        margin: 0 auto 40px auto;
+      }
+
+      /* --- Gaya Bagian Musuh --- */
+      .enemies-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .enemy-card {
+        background-color: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(166, 214, 232, 0.5);
+        border-radius: 15px;
+        padding: 25px;
+        text-align: left;
+        box-shadow: 0 8px 32px 0 rgba(10, 25, 49, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .enemy-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 40px 0 rgba(10, 25, 49, 0.1);
+      }
+
+      .enemy-card .enemy-img {
+        width: 100%;
+        height: 200px;
+        background-color: var(--sky-blue); /* Warna placeholder */
+        border-radius: 10px;
+        margin-bottom: 20px;
+        object-fit: cover; /* Agar gambar tidak gepeng */
+        background-size: cover;
+        background-position: center;
+      }
+
+      .enemy-card h3 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 2rem;
+        letter-spacing: 1px;
+        margin: 0;
+        color: var(--deep-blue);
+      }
+
+      .enemy-card .stand-name {
+        font-family: "Nunito Sans", sans-serif;
+        font-weight: 700;
+        color: var(--soft-gold);
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+
+      .enemy-card .ability {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        opacity: 0.7;
+      }
+
+      /* --- Pemutar Musik (sekarang fungsional) --- */
+      .fake-player {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 12px 18px;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in-out 0.5s backwards;
+        cursor: pointer; /* Menandakan bisa diklik */
+        user-select: none; /* Mencegah teks terseleksi saat diklik */
+      }
+      
+      .fake-player .icon {
+        width: 20px;
+        height: 20px;
+        fill: var(--deep-blue);
+      }
+      .fake-player .song-info {
+        display: flex;
+        flex-direction: column;
+      }
+      .fake-player .song-title {
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+      .fake-player .song-artist {
+        font-size: 0.8rem;
+        opacity: 0.7;
+      }
+      .fake-player .progress-bar {
+        width: 100px;
+        height: 4px;
+        background-color: rgba(10, 25, 49, 0.1);
+        border-radius: 2px;
+        overflow: hidden;
+        margin-top: 5px;
+      }
+      
+      .fake-player .progress {
+        width: 100%;
+        height: 100%;
+        background-color: var(--sky-blue);
+        transform-origin: left;
+        /* Animasi dikontrol oleh JS */
+        animation: playProgress 183s linear;
+        animation-play-state: paused; /* Mulai dalam keadaan berhenti */
+        transform: scaleX(0); /* Mulai dari 0 */
+      }
+
+      /* Kelas untuk memulai animasi progress bar */
+      .fake-player.playing .progress {
+         transform: scaleX(1);
+         animation-play-state: running;
+      }
+      
+      @keyframes playProgress {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <audio id="song" src="media/music/Soft and Wet.mp3" loop></audio>
+
     <header class="hero-section">
-        <div class="hero-content">
-            <!-- Ikon jangkar diganti dengan teks "JOJOLION" -->
-            <h2 class="logo-text">JOJOLION</h2>
-            <h1>SOFT & WET</h1>
-        </div>
-        <div class="bubbles">
-            <div class="bubble ambient"></div>
-            <div class="bubble ambient"></div>
-            <div class="bubble ambient"></div>
-            <div class="bubble ambient"></div>
-            <div class="bubble ambient"></div>
-        </div>
-
-        <div class="stand-visual">
-            <img src="https://static.jojowiki.com/images/5/55/latest/20220801101811/Soft_%26_Wet_Infobox_Manga.png" alt="Stand Soft & Wet dari Manga">
-        </div>
+      <div class="hero-content">
+        <h2 class="logo-text">JOJOLION</h2>
+        <h1>SOFT & WET</h1>
+      </div>
+      <div class="bubbles">
+        <div class="bubble ambient"></div>
+        <div class="bubble ambient"></div>
+        <div class="bubble ambient"></div>
+        <div class="bubble ambient"></div>
+        <div class="bubble ambient"></div>
+      </div>
+      <div class="stand-visual">
+        <img
+          src="https://static.jojowiki.com/images/5/55/latest/20220801101811/Soft_%26_Wet_Infobox_Manga.png"
+          alt="Stand Soft & Wet dari Manga"
+        />
+      </div>
     </header>
-    
 
-    <div class="fake-player">
-        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55c-2.21 0-4 1.79-4 4s1.79 4 4 4s4-1.79 4-4V7h4V3h-6z"/></svg>
-        <div class="song-info">
-            <div class="song-title">Soft And Wet</div>
-            <div class="song-artist">Prince</div>
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
+    <main>
+      <section id="about" class="content-section">
+        <h2>Kekuatan Untuk Menjarah</h2>
+        <p>
+          Soft & Wet memiliki kemampuan unik melalui gelembung sabun berhias
+          bintang. Gelembung ini dapat "menjarah" atau "mencuri" aspek dari
+          objek apa pun yang disentuhnya—mulai dari suara gesekan, air dari
+          tubuh manusia, hingga penglihatan seseorang. Kemampuan ini
+          mencerminkan tema utama Jojolion tentang kehilangan dan pencarian
+          identitas.
+        </p>
+      </section>
+
+      <section
+        id="enemies"
+        class="content-section"
+        style="background-color: rgba(166, 214, 232, 0.15)"
+      >
+        <h2>Ancaman di Morioh</h2>
+        <p>
+          Perjalanan Josuke tidaklah mudah. Kota Morioh dihuni oleh para
+          pengguna Stand misterius yang dikenal sebagai Manusia Batu,
+          masing-masing dengan ambisi dan kekuatan berbahaya.
+        </p>
+
+        <div class="enemies-grid">
+          <div class="enemy-card">
+             <div class="enemy-img" style="background-image: url('#')"></div>
+            <h3>Yotsuyu Yagiyama</h3>
+            <div class="stand-name">Stand: I Am a Rock</div>
+            <p class="ability">
+              Memanipulasi gaya tarik untuk membuat objek atau orang tertentu
+              menjadi pusat gravitasi bagi benda-benda di sekitarnya.
+            </p>
+          </div>
+
+          <div class="enemy-card">
+             <div class="enemy-img" style="background-image: url('#')"></div>
+            <h3>A. Phex Brothers</h3>
+            <div class="stand-name">Stand: Schott Key No. 1 & 2</div>
+            <p class="ability">
+              Schott Key No. 1 memindahkan tangan kiri penggunanya ke objek
+              lain. Schott Key No. 2 melepaskan gas beracun dari sebuah boneka
+              sepak bola.
+            </p>
+          </div>
+
+          <div class="enemy-card">
+             <div class="enemy-img" style="background-image: url('#')"></div>
+            <h3>Wonder of U (Toru)</h3>
+            <div class="stand-name">Stand: Wonder of U</div>
+            <p class="ability">
+              Kemampuan "Kalamitas". Siapa pun yang berniat mengejar Stand ini
+              atau penggunanya akan mengalami nasib buruk yang fatal secara
+              beruntun.
+            </p>
+          </div>
         </div>
+      </section>
+    </main>
+
+    <div class="fake-player" id="player-control">
+      <svg id="player-icon-svg" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          id="player-icon-path"
+          d="M8 5v14l11-7z"
+        />
+      </svg>
+      <div class="song-info">
+        <div class="song-title">Soft And Wet</div>
+        <div class="song-artist">Prince</div>
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+      </div>
     </div>
 
-
     <script>
-        const heroSection = document.querySelector('.hero-section');
-        const standVisual = document.querySelector('.stand-visual');
+      // --- Logika untuk Stand dan Gelembung (TETAP SAMA) ---
+      const heroSection = document.querySelector(".hero-section");
+      const standVisual = document.querySelector(".stand-visual");
 
-        // --- Logika untuk gelembung ---
-        heroSection.addEventListener('click', function(e) {
-            const bubblesContainer = document.querySelector('.bubbles');
-            const burstAmount = 7; 
+      heroSection.addEventListener("click", function (e) {
+        const bubblesContainer = document.querySelector(".bubbles");
+        const burstAmount = 7;
 
-            for (let i = 0; i < burstAmount; i++) {
-                const bubble = document.createElement('div');
-                bubble.classList.add('bubble');
-                const size = Math.random() * 60 + 20;
-                bubble.style.width = `${size}px`;
-                bubble.style.height = `${size}px`;
-                bubble.style.left = `${e.clientX - size / 2}px`;
-                bubble.style.top = `${e.clientY - size / 2}px`;
-                const drift = (Math.random() - 0.5) * 200;
-                const duration = Math.random() * 5 + 4;
-                bubble.style.setProperty('--drift', `${drift}px`);
-                bubble.style.animation = `floatFreely ${duration}s ease-in-out forwards`;
-                bubble.addEventListener('animationend', function() {
-                    this.remove();
-                });
-                bubblesContainer.appendChild(bubble);
-            }
-        });
+        for (let i = 0; i < burstAmount; i++) {
+          const bubble = document.createElement("div");
+          bubble.classList.add("bubble");
+          const size = Math.random() * 60 + 20;
+          bubble.style.width = `${size}px`;
+          bubble.style.height = `${size}px`;
+          bubble.style.left = `${e.clientX - size / 2}px`;
+          bubble.style.top = `${e.clientY - size / 2}px`;
+          const drift = (Math.random() - 0.5) * 200;
+          const duration = Math.random() * 5 + 4;
+          bubble.style.setProperty("--drift", `${drift}px`);
+          bubble.style.animation = `floatFreely ${duration}s ease-in-out forwards`;
+          bubble.addEventListener("animationend", function () {
+            this.remove();
+          });
+          bubblesContainer.appendChild(bubble);
+        }
+      });
 
-        // --- Logika untuk "Spam Click" Summon ---
-        let clickCount = 0;
-        let clickTimer = null;
-        const SPAM_THRESHOLD = 10; // Jumlah klik untuk summon
-        const SPAM_WINDOW = 800;   // Dalam 0.8 detik
+      let clickCount = 0;
+      let clickTimer = null;
+      const SPAM_THRESHOLD = 10;
+      const SPAM_WINDOW = 800;
 
-        heroSection.addEventListener('click', function() {
-            clickCount++;
-            
-            // Hapus timer sebelumnya
-            clearTimeout(clickTimer);
-            // Mulai timer baru untuk mereset counter
-            clickTimer = setTimeout(() => {
-                clickCount = 0;
-            }, SPAM_WINDOW);
+      heroSection.addEventListener("click", function () {
+        clickCount++;
 
-            // Cek jika jumlah klik mencapai threshold
-            if (clickCount >= SPAM_THRESHOLD) {
-                // Jangan summon jika animasi sudah berjalan
-                if (!standVisual.classList.contains('is-summoned')) {
-                    standVisual.classList.add('is-summoned');
-                    
-                    // Hapus kelas setelah animasi selesai agar bisa di-trigger lagi
-                    standVisual.addEventListener('animationend', () => {
-                        standVisual.classList.remove('is-summoned');
-                    }, { once: true }); // Listener akan aktif sekali saja
-                }
-                // Reset counter setelah summon berhasil
-                clickCount = 0;
-            }
-        });
+        clearTimeout(clickTimer);
+        clickTimer = setTimeout(() => {
+          clickCount = 0;
+        }, SPAM_WINDOW);
+
+        if (clickCount >= SPAM_THRESHOLD) {
+          if (!standVisual.classList.contains("is-summoned")) {
+            standVisual.classList.add("is-summoned");
+
+            standVisual.addEventListener(
+              "animationend",
+              () => {
+                standVisual.classList.remove("is-summoned");
+              },
+              { once: true }
+            );
+          }
+          clickCount = 0;
+        }
+      });
+
+      // --- LOGIKA BARU UNTUK PEMUTAR MUSIK ---
+      const playerControl = document.getElementById("player-control");
+      const audio = document.getElementById("song");
+      const playerIconPath = document.getElementById("player-icon-path");
+
+      const playIcon = "M8 5v14l11-7z"; // Ikon play
+      const pauseIcon = "M6 19h4V5H6v14zm8-14v14h4V5h-4z"; // Ikon pause
+
+      let isPlaying = false;
+
+      playerControl.addEventListener('click', () => {
+        if (isPlaying) {
+          audio.pause();
+          playerIconPath.setAttribute('d', playIcon);
+          playerControl.classList.remove('playing');
+        } else {
+          audio.play();
+          playerIconPath.setAttribute('d', pauseIcon);
+          playerControl.classList.add('playing');
+        }
+        isPlaying = !isPlaying;
+      });
+
+      // Reset tampilan jika lagu selesai (karena ada 'loop', ini akan sinkron)
+      audio.addEventListener('ended', () => {
+        playerControl.classList.remove('playing');
+        // Sedikit timeout agar animasi selesai sebelum reset
+        setTimeout(() => {
+            playerControl.classList.add('playing');
+        }, 10);
+      });
 
     </script>
-</body>
+  </body>
 </html>
