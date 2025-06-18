@@ -405,3 +405,19 @@ body {
     transform: scaleX(1);
   }
 }
+
+/* Mengatur ukuran dan tampilan ikon sosial media */
+.social i {
+  font-size: 1.8rem; /* Anda bisa mengubah nilai ini, contoh: 2rem, 24px, dll. */
+  transition: color 0.3s ease; /* Efek transisi untuk perubahan warna */
+}
+
+/* Menambah jarak antar ikon */
+.social {
+  margin: 0 10px; /* Memberi jarak 10px di kiri dan kanan setiap ikon */
+}
+
+/* (Opsional) Efek hover agar ikon berubah warna saat disentuh mouse */
+.social:hover i {
+  color: #a6d6e8; /* Warna biru langit dari tema Anda */
+}
