@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Soft & Wet</title>
+    <title>Soft & Wet - Konsep Web</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -66,60 +66,83 @@
           </p>
         </section>
 
-        <section
-          id="enemies"
-          class="content-section"
-          style="background-color: rgba(166, 214, 232, 0.15)"
-        >
-          <h2>Ancaman di Morioh</h2>
-          <p>
-            Perjalanan Josuke tidaklah mudah. Kota Morioh dihuni oleh para
-            pengguna Stand misterius yang dikenal sebagai Manusia Batu,
-            masing-masing dengan ambisi dan kekuatan berbahaya.
-          </p>
-          <div class="enemies-grid">
-            <div class="enemy-card">
-              <div class="enemy-img" style="background-image: url('#')"></div>
-              <h3>Yotsuyu Yagiyama</h3>
-              <div class="stand-name">Stand: I Am a Rock</div>
-              <p class="ability">
-                Memanipulasi gaya tarik untuk membuat objek atau orang tertentu
-                menjadi pusat gravitasi bagi benda-benda di sekitarnya.
-              </p>
-            </div>
-            <div class="enemy-card">
-              <div class="enemy-img" style="background-image: url('#')"></div>
-              <h3>A. Phex Brothers</h3>
-              <div class="stand-name">Stand: Schott Key No. 1 & 2</div>
-              <p class="ability">
-                Schott Key No. 1 memindahkan tangan kiri penggunanya ke objek
-                lain. Schott Key No. 2 melepaskan gas beracun dari sebuah boneka
-                sepak bola.
-              </p>
-            </div>
-            <div class="enemy-card">
-              <a
-                href="https://www.youtube.com/watch?v=6ODOQOC37kE&pp=ygUUY2FsYW1pdHkgd29uZGVyIG9mIHU%3D"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div
-                  class="enemy-img"
-                  style="
-                    background-image: url('media/img/wou.jpg');
-                  "
-                ></div>
-              </a>
-              <h3>Wonder of U (Tidak di ketahui)</h3>
-              <div class="stand-name">Stand: Wonder of U</div>
-              <p class="ability">
-                Kemampuan "Calamity". Siapa pun yang berniat mengejar pengguna
-                Stand ini atau penggunanya akan mengalami nasib buruk yang fatal
-                secara beruntun.
-              </p>
-            </div>
+     <section
+  id="enemies"
+  class="content-section"
+  style="background-color: rgba(166, 214, 232, 0.15)"
+>
+  <div class="container">
+    <h2 class="text-center">Ancaman di Morioh</h2>
+    <p class="text-center mx-auto" style="max-width: 700px">
+      Perjalanan Josuke tidaklah mudah. Kota Morioh dihuni oleh para pengguna
+      Stand misterius yang dikenal sebagai Manusia Batu, masing-masing dengan
+      ambisi dan kekuatan berbahaya.
+    </p>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-3">
+      <div class="col">
+        <div class="card enemy-card-bootstrap h-100">
+          <img
+            src="media/img/wl.jpg"
+            class="card-img-top"
+            alt="Yotsuyu Yagiyama"
+          />
+          <div class="card-body">
+            <h3 class="card-title">Yotsuyu Yagiyama</h3>
+            <div class="stand-name mb-2">Stand: I Am a Rock</div>
+            <p class="card-text ability">
+              Memanipulasi gaya tarik untuk membuat objek atau orang tertentu
+              menjadi pusat gravitasi bagi benda-benda di sekitarnya.
+            </p>
           </div>
-        </section>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card enemy-card-bootstrap h-100">
+          <img
+            src="media/img/Schott_Key_No.2.webp"
+            class="card-img-top"
+            alt="A. Phex Brothers"
+          />
+          <div class="card-body">
+            <h3 class="card-title">A. Phex Brothers</h3>
+            <div class="stand-name mb-2">Stand: Schott Key No. 1 & 2</div>
+            <p class="card-text ability">
+              Schott Key No. 1 memindahkan tangan kiri penggunanya ke objek
+              lain. Schott Key No. 2 melepaskan gas beracun dari sebuah boneka
+              sepak bola.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card enemy-card-bootstrap h-100">
+          <a
+            href="https://www.youtube.com/watch?v=6ODOQOC37kE&pp=ygUUY2FsYW1pdHkgd29uZGVyIG9mIHU%3D"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="media/img/wou.jpg"
+              class="card-img-top"
+              alt="Wonder of U"
+            />
+          </a>
+          <div class="card-body">
+            <h3 class="card-title">Wonder of U</h3>
+            <div class="stand-name mb-2">Stand: Wonder of U</div>
+            <p class="card-text ability">
+              Kemampuan "Calamity". Siapa pun yang berniat mengejar pengguna
+              Stand ini atau penggunanya akan mengalami nasib buruk yang fatal
+              secara beruntun.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       </main>
     </div>
     <!--gw-->
@@ -131,7 +154,7 @@
           dengan penuh cinta.
         </p>
         <div class="row pt-4 gx-4 gy-4">
-          <div class=" text-center ">
+          <div class="text-center">
             <img
               src="https://i.pravatar.cc/300?img=5"
               class="rounded-circle mb-3 border border-5 border-light"
