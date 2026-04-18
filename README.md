@@ -1,1 +1,286 @@
 tugas kuliah
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soft & Wet</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="gayajojo.css" />
+  </head>
+  <body>
+    <audio id="song" src="media/music/Soft and Wet.mp3" loop></audio>
+    <div class="fake-player" id="player-control">
+      <svg
+        id="player-icon-svg"
+        class="icon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path id="player-icon-path" d="M8 5v14l11-7z" />
+      </svg>
+      <div class="song-info">
+        <div class="song-title">Soft And Wet</div>
+        <div class="song-artist">Prince</div>
+        <div class="progress-bar">
+          <div class="progress"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Nav tabs -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light shadow-sm fixed-top"
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <span style="font-family: 'Alfa Slab One', serif; color: #0a1931"
+            >JOJOLION</span
+          >
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#about">Kekuatan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#enemies">Musuh</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gwfnd">tentang saya</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#kontak">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Tema Jojo -->
+    <div class="jojo-theme">
+      <header class="hero-section">
+        <div class="hero-content">
+          <h2 class="logo-text">JOJOLION</h2>
+          <h1>SOFT & WET</h1>
+        </div>
+        <div class="bubbles">
+          <div class="bubble ambient"></div>
+          <div class="bubble ambient"></div>
+          <div class="bubble ambient"></div>
+          <div class="bubble ambient"></div>
+          <div class="bubble ambient"></div>
+        </div>
+        <div class="stand-visual">
+          <img
+            src="https://static.jojowiki.com/images/5/55/latest/20220801101811/Soft_%26_Wet_Infobox_Manga.png"
+            alt="Stand Soft & Wet dari Manga"
+          />
+        </div>
+      </header>
+      <!----foto stand-->
+
+      <!------>
+      <main>
+        <section id="about" class="content-section">
+          <h2>Kekuatan Untuk Menjarah</h2>
+          <p>
+            Soft & Wet memiliki kemampuan unik melalui gelembung sabun berhias
+            bintang. Gelembung ini dapat "menjarah" atau "mencuri" aspek dari
+            objek apa pun yang disentuhnya—mulai dari suara gesekan, air dari
+            tubuh manusia, hingga penglihatan seseorang. Kemampuan ini
+            mencerminkan tema utama Jojolion tentang kehilangan dan pencarian
+            identitas.
+          </p>
+        </section>
+
+        <section
+          id="enemies"
+          class="content-section"
+          style="background-color: rgba(166, 214, 232, 0.15)"
+        >
+          <div class="container">
+            <h2 class="text-center">Ancaman di Morioh</h2>
+            <p class="text-center mx-auto" style="max-width: 700px">
+              Perjalanan Josuke tidaklah mudah. Kota Morioh dihuni oleh para
+              pengguna Stand misterius yang dikenal sebagai Manusia Batu,
+              masing-masing dengan ambisi dan kekuatan berbahaya.
+            </p>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-3">
+              <div class="col">
+                <div class="card enemy-card-bootstrap h-100">
+                  <img
+                    src="media/img/wl.jpg"
+                    class="card-img-top"
+                    alt="Yotsuyu Yagiyama"
+                  />
+                  <div class="card-body">
+                    <h3 class="card-title">Yotsuyu Yagiyama</h3>
+                    <div class="stand-name mb-2">Stand: I Am a Rock</div>
+                    <p class="card-text ability">
+                      Memanipulasi gaya tarik untuk membuat objek atau orang
+                      tertentu menjadi pusat gravitasi bagi benda-benda di
+                      sekitarnya.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card enemy-card-bootstrap h-100">
+                  <img
+                    src="media/img/Schott_Key_No.2.webp"
+                    class="card-img-top"
+                    alt="A. Phex Brothers"
+                  />
+                  <div class="card-body">
+                    <h3 class="card-title">A. Phex Brothers</h3>
+                    <div class="stand-name mb-2">
+                      Stand: Schott Key No. 1 & 2
+                    </div>
+                    <p class="card-text ability">
+                      Schott Key No. 1 memindahkan tangan kiri penggunanya ke
+                      objek lain. Schott Key No. 2 melepaskan gas beracun dari
+                      sebuah boneka sepak bola.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="card enemy-card-bootstrap h-100">
+                  <a
+                    href="https://www.youtube.com/watch?v=6ODOQOC37kE&pp=ygUUY2FsYW1pdHkgd29uZGVyIG9mIHU%3D"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="media/img/wou.jpg"
+                      class="card-img-top"
+                      alt="Wonder of U"
+                    />
+                  </a>
+                  <div class="card-body">
+                    <h3 class="card-title">Wonder of U</h3>
+                    <div class="stand-name mb-2">Stand: Wonder of U</div>
+                    <p class="card-text ability">
+                      Kemampuan "Calamity". Siapa pun yang berniat mengejar
+                      pengguna Stand ini atau penggunanya akan mengalami nasib
+                      buruk yang fatal secara beruntun.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <!--gw-->
+    <div class="container-fluid pt-5 pb-5 bg-light">
+      <div class="container text-center">
+        <h2 class="display-3" id="gwfnd">gwfnd Kami</h2>
+        <p>
+          Di balik setiap hidangan lezat, ada tangan-tangan ahli yang bekerja
+          dengan penuh cinta.
+        </p>
+        <div class="row pt-4 gx-4 gy-4">
+          <div class="text-center">
+            <img
+              src="https://i.pravatar.cc/300?img=5"
+              class="rounded-circle mb-3 border border-5 border-light"
+            />
+            <h4>Fitrah nauli</h4>
+            <p>Pengoreng Handal</p>
+            <p>
+              <a
+                href="https://www.youtube.com/watch?v=xvFZjo5PgG0"
+                class="social"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/watch?v=xvFZjo5PgG0"
+                class="social"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--ini komentar-->
+    <div class="container-fluid pt-5 pb-5 kontak">
+      <div class="container">
+        <h2 class="display-3 text-center" id="kontak">Kontak Kami</h2>
+        <p class="text-center">
+          Ada pertanyaan, kritik, atau saran? Jangan ragu hubungi kami!
+        </p>
+        <div class="row pb-3">
+          <div class="col-md-6">
+            <input
+              class="form-control form-control-lg mb-3"
+              type="text"
+              placeholder="Nama"
+            />
+            <input
+              class="form-control form-control-lg mb-3"
+              type="text"
+              placeholder="Email"
+            />
+            <input
+              class="form-control form-control-lg"
+              type="text"
+              placeholder="No. Phone"
+            />
+          </div>
+          <div class="col-md-6">
+            <textarea
+              class="form-control form-control-lg"
+              rows="5"
+              placeholder="Pesan Anda..."
+            ></textarea>
+          </div>
+        </div>
+        <div class="col-md-3 mx-auto text-center">
+          <button type="button" class="btn btn-danger btn-lg">
+            Kirim Pesan
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container text-center pt-5 pb-5">
+      All Rights Reserved &copy; 2025
+    </div>
+    <!--ini komentar-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="gayajojo.js"></script>
+  </body>
+</html>
+
